@@ -18,3 +18,4 @@ class personSerializer(serializers.ModelSerializer):
         gender = validated_data.pop('gender')  
         validated_data['gender'] = gender.lower()  
         return person.objects.create(**validated_data)
+

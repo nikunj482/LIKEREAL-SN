@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body>
+
+
+  <div class="container">
+      <h1>Login</h1>
+      <form  method="post" action="{% url 'login' %}">
+          <p style="text-align: center;margin-top: 27px;color: rgb(5, 217, 83);">{{error}}</p>
+          {% csrf_token %}
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+
+
+          <button type="submit">Login</button>
+          <div class="signup-link">
+              Not a Member? <a href="register/">Signup now</a>
+          </div>
+          <div class="pass-link">
+            {% comment %} <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p> {% endcomment %}
+             {% comment %} Forget Your Password   <a href="forgot/">Forgot password</a> {% endcomment %}
+          </div>
+      </form>
+  </div>
+</body>
+</html>
+</html>
+
