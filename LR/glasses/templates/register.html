@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="{% static 'register.css' %}" />
+</head>
+<body>
+<div class="form-container">
+    <h2>Registration</h2>
+    {% if messages %}
+        <div class="messages">
+            <ul>
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">Username</span>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+            </div>
+            <div class="input-box">
+                <span class="details">Full Name</span>
+                <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+            </div>
+            <div class="input-box">
+                <span class="details">Email ID</span>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="input-box">
+                <span class="details">Phone Number</span>
+                <input type="text" id="phone" name="phone" required minlength="10" placeholder="Enter your phone number">
+            </div>
+            <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            </div>
+            <div class="input-box">
+                <span class="details">Confirm Password</span>
+                <input type="password" id="confirmpassword" name="confirmpassword" required placeholder="Confirm your password">
+            </div>
+            <div class="input-box">
+                <span class="details">Gender</span>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="button">
+            <input type="submit" class="register-button" value="Register">
+        </div>
+    </form>
+    <hr>
+    <p>Already have an account? <a href="">Login here</a></p>
+</div>
+</body>
+</html>
