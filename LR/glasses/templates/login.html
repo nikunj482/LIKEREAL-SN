@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
+        
     <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
 <body>
@@ -12,6 +13,15 @@
 
   <div class="container">
       <h1>Login</h1>
+      {% if messages %}
+      <div class="messages">
+          <ul>
+              {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}" style=" margin-left:50px; color:red;" {% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+      </div>
+  {% endif %}
       <form  method="post" action="{% url 'login' %}">
           <p style="text-align: center;margin-top: 27px;color: rgb(5, 217, 83);">{{error}}</p>
           {% csrf_token %}
