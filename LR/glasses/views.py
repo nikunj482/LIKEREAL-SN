@@ -67,6 +67,30 @@ class LoginView(generics.CreateAPIView):
         
         return render(request, self.template_name)
 
+class ForgotView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    tempalte_name = "forgot.html"
+ 
+    def get(self, request):
+        return render(request, self.tempalte_name)
+    
+
+
+
+class OtpView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "otp.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+class ResetView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "reset.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
 class HomeView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "home.html"
