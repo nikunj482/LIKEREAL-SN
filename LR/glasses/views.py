@@ -24,8 +24,14 @@ class RegisterView(generics.CreateAPIView):
 
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
+            phone=serializer.validated_data.get('phone')
             password = serializer.validated_data.get("password")
             confirm_password = serializer.validated_data.get("confirmpassword")
+            
+            
+            if len(phone) != 10 :
+                messages.error(request,"phone number is not Valid")
+                return redirect("register")
 
             if password != confirm_password:
                 messages.error(request, "Passwords do not match")
@@ -55,7 +61,7 @@ class LoginView(generics.CreateAPIView):
                 messages.success(request, "Login successful")
                 return redirect("home")
             else:
-                messages.error(request, "Invalid credentials")
+                messages.error(request, "Invalid Username or Password")
         else:
             messages.error(request, "Please provide username and password")
         
