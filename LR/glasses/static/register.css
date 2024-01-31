@@ -51,7 +51,7 @@ body {
 }
 .user-details .input-box input {
     height: 45px;
-    width: 100%;
+    width: 93%;
     outline: none;
     font-size: 16px;
     border-radius: 5px;
@@ -84,3 +84,6 @@ body {
 .button input:hover {
     background-color: #15363cb0;
 }
+
+
+
