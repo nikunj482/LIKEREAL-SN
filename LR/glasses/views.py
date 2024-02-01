@@ -72,13 +72,17 @@ class LoginView(generics.CreateAPIView):
         return render(request, self.template_name)
 
 class ForgotView(generics.CreateAPIView):
+<<<<<<< HEAD
     serializer_class=forgetserializer
+=======
+>>>>>>> d65ce917ad5cf484a48eafca096b02617c249664
     renderer_classes = [TemplateHTMLRenderer]
     tempalte_name = "forgot.html"
  
     def get(self, request):
         return render(request, self.tempalte_name)
     
+<<<<<<< HEAD
     def post(self,request):
         email=request.POST.get("email")
         fake_otp=random.randint(1000,9999)
@@ -104,15 +108,24 @@ class ForgotView(generics.CreateAPIView):
 
 class OtpView(generics.CreateAPIView):
     serializer_class=forgetserializer
+=======
+
+
+
+class OtpView(generics.CreateAPIView):
+>>>>>>> d65ce917ad5cf484a48eafca096b02617c249664
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "otp.html"
 
     def get(self, request):
         return render(request, self.template_name)
+<<<<<<< HEAD
     
     
     def post(self,request):
         return redirect('reset')
+=======
+>>>>>>> d65ce917ad5cf484a48eafca096b02617c249664
 
 class ResetView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -120,6 +133,7 @@ class ResetView(generics.CreateAPIView):
 
     def get(self, request):
         return render(request, self.template_name)
+<<<<<<< HEAD
     
     
     
@@ -138,6 +152,8 @@ class ResetView(generics.CreateAPIView):
             
             
             
+=======
+>>>>>>> d65ce917ad5cf484a48eafca096b02617c249664
 
 class HomeView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]

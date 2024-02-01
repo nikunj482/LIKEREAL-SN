@@ -10,6 +10,7 @@
   <body>
     <div class="otp-container">
       <h2>OTP Sent</h2>
+<<<<<<< HEAD
        
     {% if messages %}
     <div class="messages">
@@ -23,13 +24,22 @@
       <hr />
       {% comment %} <p><strong>{{ email }}</strong>.</p> {% endcomment %}
       
+=======
+      <hr />
+      <p><strong>{{ email }}</strong>.</p>
+      <p>OTP: <strong>{{ fake_otp }}</strong></p>
+>>>>>>> d65ce917ad5cf484a48eafca096b02617c249664
 
       <form method="post" >
         {% csrf_token %}
         <input type="hidden" name="email" value="{{ email }}" />
         <input type="hidden" name="fake_otp" value="{{ fake_otp }}" />
         <label for="entered_otp">Enter OTP</label>
+<<<<<<< HEAD
         <input type="text" id="entered_otp" name="enter_otp" />
+=======
+        <input type="text" id="entered_otp" name="entered_otp" />
+>>>>>>> d65ce917ad5cf484a48eafca096b02617c249664
         {% if error_message %}
         <p>{{ error_message }}</p>
         {% endif %}
