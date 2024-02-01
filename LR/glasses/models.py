@@ -14,6 +14,7 @@ class person(models.Model):
     password = models.CharField(max_length=100, default="")
     confirmpassword = models.CharField(max_length=100, default="")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default="")
+    country = models.CharField(max_length=10,default="")
 
     def __str__(self):
-        return f"{self.username} {self.fullname} {self.email} {self.phone} {self.gender}"
+        return f"{self.username} {self.fullname} {self.email} {self.phone} {self.gender} {self.country}"

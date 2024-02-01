@@ -11,10 +11,8 @@
     <div class="otp-container">
       <h2>OTP Sent</h2>
       <hr />
-      <p><strong>{{ email }}</strong>.</p>
-      <p>OTP: <strong>{{ fake_otp }}</strong></p>
-
-      <form method="post" >
+      <p><strong>{{ email }}</strong></p>
+      <form method="post">
         {% csrf_token %}
         <input type="hidden" name="email" value="{{ email }}" />
         <input type="hidden" name="fake_otp" value="{{ fake_otp }}" />
