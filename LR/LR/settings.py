@@ -124,3 +124,45 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Or your preferred backend
+EMAIL_HOST = 'smtp.gmail.com'  # Example for Gmail
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sahilpatel313200@gmail.com'
+EMAIL_HOST_PASSWORD = 'kapi cous pffd fvsx'
+DEFAULT_FROM_EMAIL = 'sahilpatel313200@gmail.com' 
+
+
+
+
+ 
+    # def post(self,request):
+    #     email=request.POST.get("email")
+    #     enter_otp=request.POST.get("enter_otp")
+    #     fake_otp=random.randint(1000,9999)
+
+    #     print("fake otp:" ,fake_otp)
+    #     fake_otp = str(fake_otp)
+    #     try:
+    #         user=person.objects.filter(email=email)
+
+    #     except:
+    #         messages.error(request, "Email Not Valid")
+    #         return redirect('forgot')   
+        
+            
+    #     if user:
+    #         email = EmailMessage(subject='One Time Password',body=fake_otp,to=[email])
+    #         email.send()
+            
+    #     fake_otp != enter_otp
+    #     # messages.error(request, "OTP Invalid")
+                
+    #     return render(request, self.tempalte_name)
+        
