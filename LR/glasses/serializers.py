@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import person
+import random
 
 
 class personSerializer(serializers.ModelSerializer):
@@ -30,3 +31,9 @@ class personSerializer(serializers.ModelSerializer):
         return person.objects.create(**validated_data)
 
 
+class forgetserializer(serializers.ModelSerializer):
+    otp=serializers.IntegerField()
+
+    class Meta:
+        model = person 
+        fields = ['email','password','confirmpassword','otp']

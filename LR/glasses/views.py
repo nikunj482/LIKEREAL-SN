@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from rest_framework import generics
 from rest_framework.response import Response
-from .serializers import personSerializer       
+from .serializers import personSerializer
 from rest_framework.renderers import TemplateHTMLRenderer
 from .models import person
 from django.contrib import messages
+import random
+from django.core.mail import EmailMessage
 
 
 class RegisterView(generics.CreateAPIView):
@@ -37,7 +39,7 @@ class RegisterView(generics.CreateAPIView):
                 return redirect("register")
 
             serializer.save()
-            messages.success(request, "Registration successful")
+
             return redirect("login")
 
         return render(request, self.template_name, {"serializer": serializer})
@@ -59,15 +61,15 @@ class LoginView(generics.CreateAPIView):
             user = person.objects.filter(username=username).first()
             if user and user.password == password:
                 messages.success(request, "Login successful")
+                request.session["username"] = username
                 return redirect("home")
             else:
                 messages.error(request, "Invalid Username or Password")
         else:
             messages.error(request, "Please provide username and password")
-    
         return render(request, self.template_name)
 
- 
+
 class ForgotView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     tempalte_name = "forgot.html"
@@ -97,4 +99,6 @@ class HomeView(generics.CreateAPIView):
     template_name = "home.html"
 
     def get(self, request):
+        if "username" not in request.session:
+            return redirect("login")
         return render(request, self.template_name)
