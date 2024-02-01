@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import person
+import random
 
 class personSerializer(serializers.ModelSerializer):
     GENDER_CHOICES = [
@@ -19,3 +20,10 @@ class personSerializer(serializers.ModelSerializer):
         validated_data['gender'] = gender.lower()  
         return person.objects.create(**validated_data)
 
+
+class forgetserializer(serializers.ModelSerializer):
+    otp=serializers.IntegerField()
+
+    class Meta:
+        model = person 
+        fields = ['email','password','confirmpassword','otp']
