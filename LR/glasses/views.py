@@ -29,25 +29,23 @@ class RegisterView(generics.CreateAPIView):
             phone = serializer.validated_data.get("phone")
             password = serializer.validated_data.get("password")
             confirm_password = serializer.validated_data.get("confirmpassword")
-<<<<<<< HEAD
+
             
             if len(phone) != 10 :
                 messages.error(request,"phone number is not Valid")
-=======
+
 
             if len(phone) != 10:
                 messages.error(request, "phone number is not Valid")
->>>>>>> 9ce8bb257e5a607b608763439900e8f6ff6be1f3
+
                 return redirect("register")
 
             if password != confirm_password:
                 messages.error(request, "Passwords do not match")
                 return redirect("register")
             serializer.save()
-<<<<<<< HEAD
-=======
 
->>>>>>> 9ce8bb257e5a607b608763439900e8f6ff6be1f3
+
             return redirect("login")
         return render(request, self.template_name, {"serializer": serializer})
 
@@ -56,11 +54,11 @@ class LoginView(generics.CreateAPIView):
     serializer_class = personSerializer
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "login.html"
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 9ce8bb257e5a607b608763439900e8f6ff6be1f3
+    
+
+
+
     def get(self, request):
         return render(request, self.template_name)
 
@@ -78,25 +76,21 @@ class LoginView(generics.CreateAPIView):
                 messages.error(request, "Invalid Username or Password")
         else:
             messages.error(request, "Please provide username and password")
-<<<<<<< HEAD
+
             return render(request, self.template_name)
-=======
+
         return render(request, self.template_name)
->>>>>>> 9ce8bb257e5a607b608763439900e8f6ff6be1f3
+
 
 
 class ForgotView(generics.CreateAPIView):
-<<<<<<< HEAD
-    serializer_class=forgetserializer
-=======
->>>>>>> 9ce8bb257e5a607b608763439900e8f6ff6be1f3
     renderer_classes = [TemplateHTMLRenderer]
     tempalte_name = "forgot.html"
 
     def get(self, request):
         return render(request, self.tempalte_name)
 
-<<<<<<< HEAD
+
     def post(self,request):
         email=request.POST.get("email")
         print('email:',email)
@@ -118,9 +112,6 @@ class ForgotView(generics.CreateAPIView):
             messages.error(request, "Email Not Valid")
             return redirect('forgot')   
         
-=======
-
->>>>>>> 9ce8bb257e5a607b608763439900e8f6ff6be1f3
 class OtpView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "otp.html"
@@ -128,7 +119,7 @@ class OtpView(generics.CreateAPIView):
     def get(self, request):
         return render(request, self.template_name)
 
-<<<<<<< HEAD
+
     def post(self,request):
         enter_otp=request.POST.get('enter_otp')
         otp = request.session.get("otp")
@@ -137,8 +128,7 @@ class OtpView(generics.CreateAPIView):
             return redirect('otppage')
         else:
             return redirect('reset')
-=======
->>>>>>> 9ce8bb257e5a607b608763439900e8f6ff6be1f3
+
 
 class ResetView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -146,7 +136,6 @@ class ResetView(generics.CreateAPIView):
     
     def get(self, request):
         return render(request, self.template_name)
-<<<<<<< HEAD
 
     def post(self, request):
         new_password = request.POST.get("new_password")
@@ -168,16 +157,8 @@ class ResetView(generics.CreateAPIView):
             user.set_password(new_password)
             user.save()
             return redirect('login')
-        return render(request,self.template_name)
-        
-=======
-    
-    def Post(self, request):
-        email = request.POST.get("email")
-        
+        return render(request,self.template_name)       
 
-
->>>>>>> 9ce8bb257e5a607b608763439900e8f6ff6be1f3
 class HomeView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "home.html"
