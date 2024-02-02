@@ -30,7 +30,6 @@ class RegisterView(generics.CreateAPIView):
             password = serializer.validated_data.get("password")
             confirm_password = serializer.validated_data.get("confirmpassword")
             
-            
             if len(phone) != 10 :
                 messages.error(request,"phone number is not Valid")
                 return redirect("register")
@@ -38,11 +37,8 @@ class RegisterView(generics.CreateAPIView):
             if password != confirm_password:
                 messages.error(request, "Passwords do not match")
                 return redirect("register")
-
             serializer.save()
-           
             return redirect("login")
-
         return render(request, self.template_name, {"serializer": serializer})
 
 class LoginView(generics.CreateAPIView):
@@ -50,7 +46,6 @@ class LoginView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "login.html"
     
-
     def get(self, request):
         return render(request, self.template_name)
 
@@ -68,60 +63,52 @@ class LoginView(generics.CreateAPIView):
                 messages.error(request, "Invalid Username or Password")
         else:
             messages.error(request, "Please provide username and password")
-        
-        return render(request, self.template_name)
+            return render(request, self.template_name)
 
 class ForgotView(generics.CreateAPIView):
-
     serializer_class=forgetserializer
-
-
     renderer_classes = [TemplateHTMLRenderer]
     tempalte_name = "forgot.html"
- 
+
     def get(self, request):
         return render(request, self.tempalte_name)
 
     def post(self,request):
         email=request.POST.get("email")
-        fake_otp=random.randint(1000,9999)
-
-        print("fake otp:" ,fake_otp)
-        fake_otp = str(fake_otp)
-        
+        print('email:',email)
         try:
             user=person.objects.filter(email=email)
+            request.session["email"] = email
             print(user)
         except:
             return redirect('forgot')
         
         if user:
-            email = EmailMessage(body=fake_otp,to=[email])
+            otp = str(random.randint(1000,9999))
+            request.session["otp"] = otp
+            print("otp :", otp)
+            email = EmailMessage(body=otp,to=[email])
             email.send()
-            return redirect('otp')
+            return redirect('otppage')
         else:
             messages.error(request, "Email Not Valid")
             return redirect('forgot')   
         
-            
-
-
-
-
 class OtpView(generics.CreateAPIView):
-
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "otp.html"
 
     def get(self, request):
         return render(request, self.template_name)
 
-    
-    
     def post(self,request):
-        return redirect('reset')
-
-
+        enter_otp=request.POST.get('enter_otp')
+        otp = request.session.get("otp")
+        if otp != enter_otp:
+            messages.error(request," Invalid OTP")
+            return redirect('otppage')
+        else:
+            return redirect('reset')
 
 class ResetView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -130,30 +117,31 @@ class ResetView(generics.CreateAPIView):
     def get(self, request):
         return render(request, self.template_name)
 
-    
-    
     def post(self, request):
-        if request.method == "POST":
-            password = request.POST.get("password")
-            confirmpassword = request.POST.get("confirm_Password")
-
-            if password == confirmpassword:
-                User = person.objects.all
-                new_password = password
-                User.password = new_password
-                User.save()
-                return redirect("login")
-            
-            
-            
-
-
-
+        new_password = request.POST.get("new_password")
+        confirmpassword = request.POST.get("confirm__password")
+        print("new_password:",new_password)
+        print("confirm_password:",confirmpassword)
+        email= request.session.get("email")
+        
+        try:
+            user=person.objects.filter(email=email)
+        except:
+            return redirect('forgot')
+        
+        if new_password != confirmpassword:
+            messages.error(request,"password Does't match")
+            return redirect('reset')
+        user = request.user
+        if user:
+            user.set_password(new_password)
+            user.save()
+            return redirect('login')
+        return render(request,self.template_name)
+        
 class HomeView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "home.html"
 
     def get(self, request):
-        if "username" not in request.session:
-            return redirect("login")
         return render(request, self.template_name)

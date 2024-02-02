@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import person
 
-
 class personAdmin(admin.ModelAdmin):
     list_display = (
         "username",
@@ -10,6 +9,4 @@ class personAdmin(admin.ModelAdmin):
         "phone",
         "gender",
     )
-
-
 admin.site.register(person, personAdmin)

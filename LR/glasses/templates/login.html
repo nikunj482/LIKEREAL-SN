@@ -1,16 +1,12 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
-        
+    <title>Login Page</title>  
     <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
 <body>
-
-
   <div class="container">
       <h1>Login</h1>
       {% if messages %}
@@ -31,7 +27,6 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required>
 
-
           <button type="submit">Login</button>
           <div class="signup-link">
               Not a Member? <a href="register/">Signup now</a>
@@ -44,4 +39,3 @@
 </body>
 </html>
 </html>
-
