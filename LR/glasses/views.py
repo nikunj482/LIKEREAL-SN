@@ -30,10 +30,8 @@ class RegisterView(generics.CreateAPIView):
             password = serializer.validated_data.get("password")
             confirm_password = serializer.validated_data.get("confirmpassword")
 
-            
             if len(phone) != 10 :
                 messages.error(request,"phone number is not Valid")
-
 
             if len(phone) != 10:
                 messages.error(request, "phone number is not Valid")
@@ -44,8 +42,6 @@ class RegisterView(generics.CreateAPIView):
                 messages.error(request, "Passwords do not match")
                 return redirect("register")
             serializer.save()
-
-
             return redirect("login")
         return render(request, self.template_name, {"serializer": serializer})
 
@@ -54,10 +50,6 @@ class LoginView(generics.CreateAPIView):
     serializer_class = personSerializer
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "login.html"
-
-    
-
-
 
     def get(self, request):
         return render(request, self.template_name)
@@ -76,10 +68,8 @@ class LoginView(generics.CreateAPIView):
                 messages.error(request, "Invalid Username or Password")
         else:
             messages.error(request, "Please provide username and password")
-
             return render(request, self.template_name)
 
-        return render(request, self.template_name)
 
 
 
@@ -89,7 +79,6 @@ class ForgotView(generics.CreateAPIView):
 
     def get(self, request):
         return render(request, self.tempalte_name)
-
 
     def post(self,request):
         email=request.POST.get("email")
@@ -118,7 +107,6 @@ class OtpView(generics.CreateAPIView):
 
     def get(self, request):
         return render(request, self.template_name)
-
 
     def post(self,request):
         enter_otp=request.POST.get('enter_otp')

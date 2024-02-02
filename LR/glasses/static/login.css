@@ -1,5 +1,5 @@
 body {
-<<<<<<< HEAD
+
     font-family: Arial, sans-serif;
     background-image: url('https://static.vecteezy.com/system/resources/previews/022/426/801/non_2x/pineapple-with-sunglasses-on-blue-background-summer-vacation-concept-generative-ai-free-photo.jpeg');
     margin: 0;
@@ -12,7 +12,7 @@ body {
     background-size:cover;
     background-position: center;
     justify-content: left;
-=======
+
   font-family: Arial, sans-serif;
   background-image: url("https://static.vecteezy.com/system/resources/previews/022/426/801/non_2x/pineapple-with-sunglasses-on-blue-background-summer-vacation-concept-generative-ai-free-photo.jpeg");
   margin: 0;
@@ -25,7 +25,7 @@ body {
   background-size: cover;
   background-position: center;
   justify-content: left;
->>>>>>> 9ce8bb257e5a607b608763439900e8f6ff6be1f3
+
 }
 
 .container {

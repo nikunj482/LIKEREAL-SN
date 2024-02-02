@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <title>Registration Page</title>
     <link rel="stylesheet" href="{% static 'register.css' %}" />
-    
 </head>
-
 <body>
 <div class="form-container">
     <h2>Registration</h2>
@@ -40,7 +38,6 @@
                     <option value="other">Other</option>
                 </select>
             </div>
-
             <div class="input-box">
                 <span class="details">Email ID</span>
                 <input type="email" id="email" name="email" required placeholder="Enter your email">
@@ -82,10 +79,8 @@
                     <option value="Spain">
                     <option value="Australia">
                     <option value="Indonesia">
-
                 </datalist>
             </div>
-            
             <div class="input-box">
                 <span class="details">Password</span>
                 <input type="password" id="password" name="password" required placeholder="Enter your password">
@@ -100,7 +95,6 @@
         </div>
     </form>
     <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
-
 </div>
 </body>
 </html>
