@@ -29,13 +29,11 @@ class RegisterView(generics.CreateAPIView):
             phone = serializer.validated_data.get("phone")
             password = serializer.validated_data.get("password")
             confirm_password = serializer.validated_data.get("confirmpassword")
-
-            if len(phone) != 10 :
-                messages.error(request,"phone number is not Valid")
+            print("password",password)
+            print("confirm_password",confirm_password)
 
             if len(phone) != 10:
                 messages.error(request, "phone number is not Valid")
-
                 return redirect("register")
 
             if password != confirm_password:
@@ -61,7 +59,7 @@ class LoginView(generics.CreateAPIView):
         if username and password:
             user = person.objects.filter(username=username).first()
             if user and user.password == password:
-                messages.success(request, "Login successful")
+                messages.success(request, "Login successfully")
                 request.session["username"] = username
                 return redirect("home")
             else:
@@ -132,19 +130,19 @@ class ResetView(generics.CreateAPIView):
         print("confirm_password:",confirmpassword)
         email= request.session.get("email")
         
-        try:
-            user=person.objects.filter(email=email)
-        except:
-            return redirect('forgot')
-        
-        if new_password != confirmpassword:
+        if new_password == confirmpassword:
+            User = person.objects.get(email=email)
+            newpassword=new_password    
+            User.password=newpassword
+            User.confirmpassword=newpassword
+            User.save()
+            return redirect('login')
+           
+        else:
             messages.error(request,"password Does't match")
             return redirect('reset')
-        if user:
-            user.set_password(new_password)
-            user.save()
-            return redirect('login')
-        return render(request,self.template_name)       
+            
+              
 
 class HomeView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
