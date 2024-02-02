@@ -68,7 +68,7 @@ class LoginView(generics.CreateAPIView):
                 messages.error(request, "Invalid Username or Password")
         else:
             messages.error(request, "Please provide username and password")
-            return render(request, self.template_name)
+        return render(request, self.template_name)
 
 
 
