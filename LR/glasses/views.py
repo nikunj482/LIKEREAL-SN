@@ -95,7 +95,6 @@ class ResetView(generics.CreateAPIView):
     
     def Post(self, request):
         email = request.POST.get("email")
-        
 
 
 class HomeView(generics.CreateAPIView):
