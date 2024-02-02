@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/022/426/796/non_2x/pineapple-with-sunglasses-on-blue-background-summer-vacation-concept-generative-ai-free-photo.jpeg');
+    margin: 0;
+    background-repeat: no-repeat;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
+.form-container {
+    background-color: #ffffff18;
+    box-shadow: 0 0 10px rgb(9, 1, 1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 400px;
+    width: 600px;
+}
+.form-container h2 {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+.form-container h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: black;
+}
+.user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+.user-details .input-box {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+.user-details .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.user-details .input-box input {
+    height: 30px;
+    width: 90%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+    border-color: #000000;
+}
+.button {
+    height: 45px;
+    margin: 35px 0;
+}
+.button input {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color:rgb(7 55 55);
+}
+.button input:hover {
+    background-color: #15363cb0;
+}
+
+
+
+a{
+    color: #154947;
+}
+
+a:hover {
+    color: #fcbf5c;
+}

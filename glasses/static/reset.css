@@ -1,0 +1,61 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(https://cdn.discordapp.com/attachments/1191264803688292422/1199675748131278859/handsome-tourist-sunglasses-straw-hat-looking-aside-smiling-pleased-exploring-sighsteeing.jpg?ex=65c3681b&is=65b0f31b&hm=7e77122729b170f1d8b07bbd64a3254dc136a264b692e3e993cb7d9f13511e86&);
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-left: 400px;
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  background-color: #058ea329;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="password"],
+input[type="submit"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid transparent; 
+}
+
+input[type="submit"] {
+  display: block;
+  background-color: #00778C;
+  color: #fff;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="submit"]:hover {
+  background: #005766;
+}
+
+a {
+  color: #000000;
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+}

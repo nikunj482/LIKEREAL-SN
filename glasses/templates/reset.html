@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Reset Password</h2> 
+      {% if messages %}
+        <div class="messages">
+            <ul>
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" style="margin-left:100px; color:red;" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+      <form action="" method="post">
+        {% csrf_token %}
+        <label for="new_password">New Password:</label>
+        <input type="password" id="new_password" name="new_password" required />
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm__password" required/>
+        <input type="submit" value="Reset Password" />
+      </form>
+      <a href="/"> <h4>Login here ?</h4></a>
+    </div> 
+  </body>
+</html>

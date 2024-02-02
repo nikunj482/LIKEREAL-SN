@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="{% static 'forgot.css' %}">
+</head>
+<style>
+    h3 {
+    font-size: 17px;
+}
+</style>
+<body>
+<div class="forgot-container">
+    <h2>Forgot Password</h2>
+    {% if messages %}
+        <div class="messages">
+            <ul>
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" style="margin-left:-50px; color:red;" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <form action="{% url 'forgot' %}" method="post">
+        {% csrf_token %}
+        <label for="email">Enter your Email </label>
+        <input type="email" id="email" name="email" required>
+        <div class="button">
+            <input type="submit" class="register-button" value="Send">
+        </div>
+    </form>
+</div>  
+</body>
+</html>

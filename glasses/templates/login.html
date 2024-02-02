@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>  
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body>
+  <div class="container">
+      <h1>Login</h1>
+      {% if messages %}
+      <div class="messages">
+          <ul>
+              {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}" style=" margin-left:50px; color:red;" {% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+      </div>
+  {% endif %}
+      <form  method="post" action="{% url 'login' %}">
+          <p style="text-align: center;margin-top: 27px;color: rgb(5, 217, 83);">{{error}}</p>
+          {% csrf_token %}
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+
+          <button type="submit">Login</button>
+          <div class="signup-link">
+              Create New Account ? <a href="register/">Signup now</a>
+          </div>
+          <div class="pass-link">
+             Forget Your Password   <a href="forgot/">Forgot password</a>
+          </div>
+      </form>
+  </div>
+</body>
+</html>
+</html>
