@@ -140,7 +140,6 @@ class ResetView(generics.CreateAPIView):
         if new_password != confirmpassword:
             messages.error(request,"password Does't match")
             return redirect('reset')
-        user = request.user
         if user:
             user.set_password(new_password)
             user.save()
