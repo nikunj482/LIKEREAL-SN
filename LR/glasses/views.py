@@ -89,9 +89,13 @@ class OtpView(generics.CreateAPIView):
 class ResetView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "reset.html"
-
+    
     def get(self, request):
         return render(request, self.template_name)
+    
+    def Post(self, request):
+        email = request.POST.get("email")
+        
 
 
 class HomeView(generics.CreateAPIView):

@@ -19,12 +19,7 @@
         </ul>
     </div>
 {% endif %}
-      <hr />  
-      {% comment %} <p><strong>{{ email }}</strong>.</p> {% endcomment %}
-      
-      <p><strong>{{ email }}</strong></p>
-      <form method="post">
-
+            
       <p><strong>{{ email }}</strong>.</p>
       <p>OTP: <strong>{{ fake_otp }}</strong></p>
 
@@ -34,10 +29,6 @@
         <input type="hidden" name="fake_otp" value="{{ fake_otp }}" />
         <label for="entered_otp">Enter OTP</label>
         <input type="text" id="entered_otp" name="enter_otp" />
-        <input type="text" id="entered_otp" name="entered_otp" />
-
-        {% if error_message %}
-        <p>{{ error_message }}</p>
         {% endif %}
         <button type="submit">Submit</button>
       </form>
