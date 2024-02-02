@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <title>Registration Page</title>
     <link rel="stylesheet" href="{% static 'register.css' %}" />
+    
 </head>
+
 <body>
 <div class="form-container">
     <h2>Registration</h2>
@@ -33,22 +35,6 @@
                 <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
             </div>
             <div class="input-box">
-                <span class="details">Email ID</span>
-                <input type="email" id="email" name="email" required placeholder="Enter your email">
-            </div>
-            <div class="input-box">
-                <span class="details">Phone Number</span>
-                <input type="text" id="phone" name="phone" required minlength="10"  placeholder="Enter your phone number">
-            </div>
-            <div class="input-box">
-                <span class="details">Password</span>
-                <input type="password" id="password" name="password" required placeholder="Enter your password">
-            </div>
-            <div class="input-box">
-                <span class="details">Confirm Password</span>
-                <input type="password" id="confirmpassword" name="confirmpassword" required placeholder="Confirm your password">
-            </div>
-            <div class="input-box">
                 <span class="details">Gender</span>
                 <select id="gender" name="gender" required style="width: 50%; height: 30px">
                     <option value="" disabled selected>Select your gender</option>
@@ -57,6 +43,60 @@
                     <option value="other">Other</option>
                 </select>
             </div>
+
+            <div class="input-box">
+                <span class="details">Email ID</span>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="input-box">
+                <span class="details">Phone Number</span>
+                <input type="text" id="phone" name="phone" required minlength="10"  placeholder="Enter your phone number">
+            </div>
+            <div class="input-box">
+                <span class="details">Country</span>
+                <input type="text" id="country" name="country" list="countries" required placeholder="Start typing to select your country">
+                <datalist id="countries">
+                    <option value="Afghanistan">
+                    <option value="Albania">
+                    <option value="Colombia">
+                    <option value="India">
+                    <option value="United States">
+                    <option value="Chaina">
+                    <option value="Japan">
+                    <option value="Indonesia">
+                    <option value="Pakistan">
+                    <option value="Brazil">
+                    <option value="Nigeria">
+                    <option value="Bangladesh">
+                    <option value="Russia">
+                    <option value="Mexico">
+                    <option value="Japan">
+                    <option value="Philippines">
+                    <option value="Egypt">
+                    <option value="Turkey">
+                    <option value="Iran">
+                    <option value="Germany">
+                    <option value="Thailand">
+                    <option value="United">
+                    <option value="France">
+                    <option value="South">
+                    <option value="Myanmar">
+                    <option value="South">
+                    <option value="Spain">
+                    <option value="Australia">
+                    <option value="Indonesia">
+
+                </datalist>
+            </div>
+            
+            <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            </div>
+            <div class="input-box">
+                <span class="details">Confirm Password</span>
+                <input type="password" id="confirmpassword" name="confirmpassword" required placeholder="Confirm your password">
+            </div>
         </div>
         <div class="button">
             <input type="submit" class="register-button" value="Register">
@@ -64,6 +104,7 @@
     </form>
   
     <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+
 </div>
 </body>
 </html>
