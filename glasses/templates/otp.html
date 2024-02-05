@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +8,7 @@
   </head>
   <body>
     <div class="otp-container">
-      <h2>OTP Sent</h2>
+      <h2>OTP Sent</h2>  
     {% if messages %}
     <div class="messages">
         <ul>
@@ -19,17 +18,13 @@
         </ul>
     </div>
 {% endif %}
-            
-      <p><strong>{{ email }}</strong>.</p>
-      <p>OTP: <strong>{{ fake_otp }}</strong></p>
-
       <form method="post" >
         {% csrf_token %}
         <input type="hidden" name="email" value="{{ email }}" />
         <input type="hidden" name="fake_otp" value="{{ fake_otp }}" />
         <label for="entered_otp">Enter OTP</label>
         <input type="text" id="entered_otp" name="enter_otp" />
-        {% endif %}
+{% endif %}
         <button type="submit">Submit</button>
       </form>
     </div>

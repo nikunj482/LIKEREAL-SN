@@ -32,8 +32,8 @@ class personSerializer(serializers.ModelSerializer):
 
 
 class forgetserializer(serializers.ModelSerializer):
-    otp=serializers.IntegerField()
-
+   
     class Meta:
         model = person 
-        fields = ['email','password','confirmpassword','otp']
+        fields = '__all__'
+     

@@ -6,8 +6,6 @@ urlpatterns = [
     path('', LoginView.as_view(), name='login'),    
     path('home/', HomeView.as_view(), name='home'),
     path('forgot/',ForgotView.as_view(),name='forgot'),
-    path('otp/',OtpView.as_view(),name='otp'),
+    path('otp/',OtpView.as_view(),name='otppage'),
     path('reset/',ResetView.as_view(),name='reset'),
-
-
 ]

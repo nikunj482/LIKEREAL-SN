@@ -14,6 +14,7 @@ class person(models.Model):
     password = models.CharField(max_length=100, default="")
     confirmpassword = models.CharField(max_length=100, default="")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default="")
+    otp=models.CharField(max_length=4,default='', null=True, blank=True)
     country = models.CharField(max_length=10,default="")
 
     def __str__(self):
