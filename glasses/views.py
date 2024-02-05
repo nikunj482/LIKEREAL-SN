@@ -124,6 +124,12 @@ class ResetView(generics.CreateAPIView):
     
     def get(self, request):
         return render(request, self.template_name)
+<<<<<<< HEAD:LR/glasses/views.py
+=======
+    
+    def Post(self, request):
+        email = request.POST.get("email")
+>>>>>>> 9e8873650858d2614912cd2298898e2e3d99b5ca:glasses/views.py
 
     def post(self, request):
         new_password = request.POST.get("new_password")
